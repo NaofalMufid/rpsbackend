@@ -13,7 +13,7 @@ This repository for dashboard management RockPaperScissors Game.
 - login & logout (progress)
 - crud (progress)
 - erd
-![alt text](https://cdn-images.visual-paradigm.com/guide/data-modeling/what-is-erd/01-entity-relationship-diagram.png)
+![alt text](https://github.com/NaofalMufid/rpsbackend/blob/main/class-diagram.png?raw=true)
 - api
 ## API Endpoint :
 ```
