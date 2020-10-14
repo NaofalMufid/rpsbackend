@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const UserGames = sequelize.define("UserGames", {
+    const UserGames = sequelize.define("user_games", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,9 +10,6 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       password: {
-        type: Sequelize.STRING
-      },
-      email: {
         type: Sequelize.STRING
       },
       createdAt: {

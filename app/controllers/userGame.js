@@ -1,17 +1,13 @@
-const db = require("../models")
-const User = db.users
+ db = require("../models")
+const UserGame = db.userGame
 const Op = db.Sequelize.Op
 
-// dashboard
-exports.home = (req, res) => {
-    res.render("dashboard")
-}
-
-// create and save a new user
+// show form add new user
 exports.new = (req, res) => {
-    res.render('users/add')
+    res.render('users/addUserGame')
 }
 
+//  save user to database
 exports.create = (req, res) => {
     // validate request
     if (!req.body.username) {
@@ -22,16 +18,16 @@ exports.create = (req, res) => {
     }
 
     // create a user
-    const user = {
+    const userGame = {
         username: req.body.username,
         password: req.body.password
     }
 
-    // save tutorial in the database
-    User.create(user)
-        .then(data => {
+    // save user in the database
+    UserGame.create(userGame)
+        .then(
             res.redirect('/users')
-        })
+        )
         .catch(err => {
             res.status(500).send({
                 message:
@@ -43,9 +39,9 @@ exports.create = (req, res) => {
 // retreive and save users from the database
 exports.findAll = (req, res) => {
 
-    User.findAll()
+    UserGame.findAll()
         .then(data => {
-            res.render('users/index', {data})
+            res.render('users/listUserGame', {data})
         })
         .catch(err => {
             res.status(500).send({
@@ -59,7 +55,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req,res) => {
     const id = req.params.id
 
-    User.findByPk(id)
+    UserGame.findByPk(id)
         .then(data => {
             res.send(data)
         })
@@ -74,9 +70,9 @@ exports.findOne = (req,res) => {
 exports.edit = (req,res) => {
     const id = req.params.id
 
-    User.findByPk(id)
+    UserGame.findByPk(id)
         .then(data => {
-            res.render('users/edit', {data})
+            res.render('users/editUserGame', {data})
         })
         .catch(err => {
             res.status(500).send({
@@ -89,7 +85,7 @@ exports.edit = (req,res) => {
 exports.update = (req, res) => {
     const id = req.params.id
 
-    User.update(req.body, {
+    UserGame.update(req.body, {
         where: {id: id}
     })
         .then(num => {
@@ -115,7 +111,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const {id} = req.params
 
-    User.destroy({
+    UserGame.destroy({
         where: {id: id}
     })
         .then(num => {
@@ -132,20 +128,4 @@ exports.delete = (req, res) => {
                 message: "Could not delete user with id="+id                
             })
         })
-}
-
-// view form login
-exports.ViewLogin = (req,res) => {
-    res.render("/auth/login")
-}
-
-// auth login
-exports.login = (req, res) => {
-    const username = req.body.username
-    const password = req.body.password
-    if (username === "adminjan" && password === "janadmin") {
-        res.redirect("/dashboard")
-    } else {
-        res.redirect("/login")
-    }
 }

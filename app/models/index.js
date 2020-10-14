@@ -19,7 +19,6 @@ const db = {}
 db.Sequelize = Sequelize
 db.sequelize = sequelize
 
-db.users = require("./user.model")(sequelize, Sequelize)
 db.userGame = require("./usergame")(sequelize, Sequelize)
 db.userGameBiodata = require("./usergamebiodata")(sequelize, Sequelize)
 db.userGameHistory = require("./usergamehistory")(sequelize, Sequelize)

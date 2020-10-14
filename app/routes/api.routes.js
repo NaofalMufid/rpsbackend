@@ -1,12 +1,12 @@
 const { users } = require("../models")
 
 module.exports = app => {
-    const users = require("../controllers/api/user.controller")
+    const users = require("../controllers/api/userGame")
 
     var router = require("express").Router()
 
     /**
-     * Enpoint API router */
+     * Endpoint API User Games */
 
     // create a new user
     router.post("/", users.create)

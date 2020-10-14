@@ -35,9 +35,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // landing route
-app.get("/", (req, res) => {
-    res.render('auth/login')
-})
+// app.get("/", (req, res) => {
+//     res.render('auth/login')
+// })
 
 // include user api router
 require("./app/routes/api.routes")(app)
