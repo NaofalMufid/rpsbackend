@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       references: {
         model: 'user_games',
-        key: 'id'
+        key: 'user_id'
       } 
     },
     firstname: {
@@ -41,5 +41,8 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DATE
     }
   })
+  UserGameBiodata.associate = function (models) {
+    UserGameBiodata.belongsTo(models.UserGames, {})
+  }
   return UserGameBiodata
 }

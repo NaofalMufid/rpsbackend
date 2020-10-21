@@ -1,5 +1,6 @@
- db = require("../models")
+const db = require("../models")
 const UserGame = db.userGame
+const UserGameBiodata = db.userGameBiodata
 const Op = db.Sequelize.Op
 
 // show form add new user
@@ -39,16 +40,17 @@ exports.create = (req, res) => {
 // retreive and save users from the database
 exports.findAll = (req, res) => {
 
-    UserGame.findAll()
-        .then(data => {
-            res.render('users/listUserGame', {data})
+    UserGameBiodata.findAll({
+        include: [{model: UserGame}]
+    }).then(data => {
+        res.render('users/listUserGame', {data})
+    })
+    .catch(err => {
+        res.status(500).send({
+            message:
+                err.message || "Some error ocurred while retrieving user"
         })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error ocurred while retrieving user"
-            })
-        })
+    })
 }
 
 // find a single user with an id
