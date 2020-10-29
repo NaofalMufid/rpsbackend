@@ -16,14 +16,14 @@
         <tbody>
             <% data.forEach(i => { %>
             <tr>
-                <td><%= i.firstname %></td>
+                <td><%= i.user_id %></td>
                 <td><%= i.username %></td>
                 <td class="form-inline">
-                    <a href="user/<%= i.id %>" class="btn btn-warning btn-sm mr-2">
+                    <a href="user/<%= i.user_id %>" class="btn btn-warning btn-sm mr-2">
                         <span data-feather="edit"></span>
                     </a>
 
-                    <form action="/users/<%= i.id %>/delete" method="POST">
+                    <form action="/users/<%= i.user_id %>/delete" method="POST">
                         <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this record?')">
                             <span data-feather="trash"></span>
                         </button>

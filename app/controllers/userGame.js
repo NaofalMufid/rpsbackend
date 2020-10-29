@@ -40,9 +40,8 @@ exports.create = (req, res) => {
 // retreive and save users from the database
 exports.findAll = (req, res) => {
 
-    UserGameBiodata.findAll({
-        include: [{model: UserGame}]
-    }).then(data => {
+    UserGame.findAll().
+    then(data => {
         res.render('users/listUserGame', {data})
     })
     .catch(err => {
