@@ -1,3 +1,6 @@
+const jwt = require('jsonwebtoken')
+const passport = require('passport')
+require('../../config/passport')(passport)
 const db = require("../../models")
 const User = db.userGame
 const Op = db.Sequelize.Op
@@ -32,11 +35,14 @@ exports.create = (req, res) => {
 }
 
 // retreive and save users from the database
-exports.findAll = (req, res) => {
-    const username = req.query.username
-    var condition = username ? { username: { [Op.iLike]: `%${username}%` } } : null
-
-    User.findAll({ where: condition })
+exports.findAll = (passport.authenticate('jwt', {session:false})),(req, res) => {
+    var token = getToken(req.headers)
+    console.log(req.headers)
+    if (token) {
+        const username = req.query.username
+        var condition = username ? { username: { [Op.iLike]: `%${username}%` } } : null
+    
+        User.findAll({ where: condition })
         .then(data => {
             res.send(data)
         })
@@ -46,6 +52,9 @@ exports.findAll = (req, res) => {
                     err.message || "Some error ocurred while retrieving user"
             })
         })
+    } else {
+        return res.status(403).send({success: false, msg: 'Unauthorized'})
+    }
 }
 
 
@@ -143,4 +152,17 @@ exports.findAllCondition = (req, res) => {
                     err.message || "Some error occured while retrieving user"
             })
         })
+}
+
+getToken = function (headers) {
+    if (headers && headers.authorization) {
+        var parted = headers.authorization.split(' ')
+        if (parted.length === 2) {
+            return parted[1]
+        } else {
+            return null
+        }
+    } else {
+        return null
+    }
 }

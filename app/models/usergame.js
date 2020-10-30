@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt-nodejs')
 module.exports = (sequelize, Sequelize) => {
     const UserGames = sequelize.define("user_games", {
       user_id: {
@@ -21,6 +22,19 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.DATE
       }
     })
+    UserGames.beforeSave((user, options) => {
+      if (user.changed('password')) {
+        user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null)
+      }
+    })
+    UserGames.prototype.comparePassword = function (passw, cb) {
+      bcrypt.compare(passw, this.password, function (err, isMatch) {
+        if (err) {
+          return cb(err)
+        }
+        cb(null, isMatch)
+      })
+    }
     UserGames.associate = function (models) {
       UserGames.hasOne(models.UserGameBiodata, {
         foreignKey: 'user_id'
