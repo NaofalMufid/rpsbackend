@@ -22,5 +22,6 @@ db.sequelize = sequelize
 db.userGame = require("./usergame")(sequelize, Sequelize)
 db.userGameBiodata = require("./usergamebiodata")(sequelize, Sequelize)
 db.userGameHistory = require("./usergamehistory")(sequelize, Sequelize)
+db.asset = require("./gameasset")(sequelize, Sequelize)
 
 module.exports = db

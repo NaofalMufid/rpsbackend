@@ -23,6 +23,7 @@ exports.register = (req, res) => {
 // signin user
 exports.login = (req, res) => {
     UserGames.findOne({
+        attributes: ['user_id','username', 'password'],
         where: {username: req.body.username}
     })
     .then((user) => {

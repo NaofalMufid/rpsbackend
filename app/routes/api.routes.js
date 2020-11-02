@@ -1,8 +1,9 @@
-const { users } = require("../models")
+const { users, asset } = require("../models")
 
 module.exports = app => {
     const users = require("../controllers/api/userGame")
     const userauth = require("../controllers/api/auth")
+    const gameasset = require("../controllers/api/asset")
 
     var router = require("express").Router()
 
@@ -36,6 +37,28 @@ module.exports = app => {
     // login
     router.post("/login", userauth.login)
 
+
+    // Game Assets Endpoint
+    // create a new asset
+    router.post("/assets", gameasset.create)
+
+    // retrieve all asset
+    router.get("/assets", gameasset.findAll)
+
+    // retrieve all asset by condition
+    router.get("/assets/name", gameasset.findAllCondition)
+
+    // retrieve a singe asset with id
+    router.get("/asset/:id", gameasset.findOne)
+
+    // update a asset with id
+    router.put("/asset/:id", gameasset.update)
+    
+    // delete a asset with id
+    router.delete("/asset/:id", gameasset.delete)
+
+    // delete all asset
+    router.delete("/assets", gameasset.deleteAll)
     
     app.use("/api/", router)
 }

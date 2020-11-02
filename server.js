@@ -7,16 +7,16 @@ const cors = require("cors")
 const PORT = process.env.PORT || 8080
 const app = express()
 
-var corsOptions = {
-    origin: "http://localhost:8081"
-}
+// var corsOptions = {
+//     origin: "http://localhost:8080"
+// }
 
-app.use(cors(corsOptions))
+app.use(cors())
 
 const db = require("./app/models")
-// db.sequelize.sync({ force: true }).then(() => {
-//     console.log("Drop and re-sync db.")
-// })
+db.sequelize.sync({ force: false }).then(() => {
+    console.log("Drop and re-sync db.")
+})
 
 // set ejs for view engine
 app.set('view engine', 'ejs')
@@ -33,11 +33,6 @@ app.use(bodyParser.json())
 
 // parse request of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
-
-// landing route
-// app.get("/", (req, res) => {
-//     res.render('auth/login')
-// })
 
 // include user api router
 require("./app/routes/api.routes")(app)
