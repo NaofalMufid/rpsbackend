@@ -8,11 +8,18 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER
       },
       username: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
+      // role:{
+      //   type: Sequelize.STRING,
+      //   default: "PlayerUser",
+      //   enum: ["PlayerUser", "SuperAdmin"]
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

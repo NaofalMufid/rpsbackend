@@ -40,4 +40,7 @@ npm run start
 #or
 
 npm run dev
+
+#run seeder
+npx sequelize db:seed:all
 ```

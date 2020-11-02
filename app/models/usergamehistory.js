@@ -15,7 +15,8 @@ module.exports = (sequelize, Sequelize) => {
         } 
       },
       score: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       lastPlay: {
         type: Sequelize.DATE

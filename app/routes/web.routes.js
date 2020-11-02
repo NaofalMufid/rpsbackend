@@ -86,5 +86,9 @@ module.exports = app => {
     // delete user from database
     router.post("/userhistory/:id/delete", userHistory.delete)
 
+    // //  basic access control
+    // router.post('/daftar', auth.daftar)
+    // router.post('/masuk', auth.login)   
+
     app.use("/", router)
 }
