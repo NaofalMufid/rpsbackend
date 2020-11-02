@@ -10,20 +10,20 @@ This repository for dashboard management RockPaperScissors Game.
 
 ## Features
 - admin dashboard 
-- login & logout (progress)
-- crud (progress)
+- login & logout 
+- crud user, biodata and history
 - erd
 ![alt text](https://github.com/NaofalMufid/rpsbackend/blob/main/class-diagram.png?raw=true)
 - api
 ## API Endpoint :
 ```
-# ok
-/users/ = GET,POST
-/users/:id = GET, PUT, DELETE
+/api/users/ = GET,POST
+/api/users/:id = GET, PUT, DELETE
+/api/register = POST
+/api/login = POST
 
-# progress
-/userBiodata/ = GET,POST
-/userBiodata/:id = GET, PUT, DELETE
+/api/userBiodata/ = GET,POST
+/api/userBiodata/:id = GET, PUT, DELETE
 
 /userHistory/ = GET,POST
 /userHistory/:id = GET, PUT, DELETE
