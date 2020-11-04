@@ -15,11 +15,11 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      // role:{
-      //   type: Sequelize.STRING,
-      //   default: "PlayerUser",
-      //   enum: ["PlayerUser", "SuperAdmin"]
-      // },
+      role:{
+        type: Sequelize.STRING,
+        defaultValue: "PlayerUser",
+        enum: ["PlayerUser", "SuperAdmin"]
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

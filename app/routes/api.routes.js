@@ -10,8 +10,6 @@ module.exports = app => {
     /**
      * Endpoint API User Games */
 
-    // create a new user
-    router.post("/users", users.create)
 
     // retrieve all user
     router.get("/users", users.findAll)
@@ -25,12 +23,6 @@ module.exports = app => {
     // update a user with id
     router.put("/user/:id", users.update)
     
-    // delete a user with id
-    router.delete("/user/:id", users.delete)
-
-    // delete all user
-    router.delete("/users", users.deleteAll)
-
     // register
     router.post("/register", userauth.register)
 
@@ -39,9 +31,7 @@ module.exports = app => {
 
 
     // Game Assets Endpoint
-    // create a new asset
-    router.post("/assets", gameasset.create)
-
+    
     // retrieve all asset
     router.get("/assets", gameasset.findAll)
 
@@ -50,15 +40,6 @@ module.exports = app => {
 
     // retrieve a singe asset with id
     router.get("/asset/:id", gameasset.findOne)
-
-    // update a asset with id
-    router.put("/asset/:id", gameasset.update)
-    
-    // delete a asset with id
-    router.delete("/asset/:id", gameasset.delete)
-
-    // delete all asset
-    router.delete("/assets", gameasset.deleteAll)
     
     app.use("/api/", router)
 }

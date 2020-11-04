@@ -21,6 +21,7 @@ exports.create = (req, res) => {
     // create a user
     const userGame = {
         username: req.body.username,
+        role: req.body.roleuser,
         password: req.body.password
     }
 

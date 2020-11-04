@@ -1,3 +1,4 @@
+const { withJWTAuthMiddleware } = require("express-kun")
 const { users } = require("../models")
 
 module.exports = app => {
@@ -6,17 +7,21 @@ module.exports = app => {
     const userGame = require("../controllers/userGame")
     const userBiodata = require("../controllers/userGameBiodata")
     const userHistory = require("../controllers/userGameHistory")
+    // const { withJWTAuthMiddleware } = require("express-kun") 
 
-    var router = require("express").Router()
+    const router = require("express").Router()
+    // const protectedRouter = withJWTAuthMiddleware(router, "nodeauthsecret")
 
     /**
      * Dashbord view router */
 
     // route direct to form login
     router.get("/login", auth.signin)
-    
-    // check user auth
     router.post("/login", auth.login)
+    
+    // route direct to form login
+    router.get("/register", auth.signup)
+    router.post("/register", auth.register)
 
     // route dashboard
     router.get("/", auth.home) 
@@ -84,11 +89,7 @@ module.exports = app => {
     router.post("/userhistory/:id/update", userHistory.update)
 
     // delete user from database
-    router.post("/userhistory/:id/delete", userHistory.delete)
-
-    // //  basic access control
-    // router.post('/daftar', auth.daftar)
-    // router.post('/masuk', auth.login)   
+    router.post("/userhistory/:id/delete", userHistory.delete)  
 
     app.use("/", router)
 }
