@@ -1,0 +1,18 @@
+<%- include('../partials/headlogin') -%>
+    <form action="/register" class="form-signin" method="POST">
+        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <label for="inputRole" class="sr-only">User Role</label>
+        <select name="roleuser" id="roleuser" class="form-control">
+            <option value="PlayUser">Play User</option>
+            <option value="SuperAdmin">Super Admin</option>
+        </select>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+<%- include('../partials/footer') -%>
+    

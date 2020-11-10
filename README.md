@@ -33,14 +33,34 @@ This repository for dashboard management RockPaperScissors Game.
 ```
 cp .env-example .env
 
-#edit attribut value in .env
+# edit attribut value in .env
+```
 
+edit server.js for next npm run apps for running db-sync
+```
+const db = require("./app/models")
+db.sequelize.sync({ force: true }).then(() => {
+    console.log("Drop and re-sync db.")
+})
+```
+```
 npm run start
+```
 
-#or
-
+# or
+```
 npm run dev
+```
 
-#run seeder
+edit server.js for next npm run apps db not running db-sync
+```
+const db = require("./app/models")
+db.sequelize.sync({ force: false }).then(() => {
+    console.log("Drop and re-sync db.")
+})
+```
+
+# run seeder
+```
 npx sequelize db:seed:all
 ```

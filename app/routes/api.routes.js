@@ -36,7 +36,7 @@ module.exports = app => {
     router.get("/assets", gameasset.findAll)
 
     // retrieve all asset by condition
-    router.get("/assets/name", gameasset.findAllCondition)
+    // router.get("/assets/name", gameasset.findAllCondition)
 
     // retrieve a singe asset with id
     router.get("/asset/:id", gameasset.findOne)
