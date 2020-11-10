@@ -1,6 +1,3 @@
-const { withJWTAuthMiddleware } = require("express-kun")
-const { users } = require("../models")
-
 module.exports = app => {
 
     const auth = require("../controllers/auth")
