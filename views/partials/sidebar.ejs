@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row">
+      <!-- sidebar -->
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="/">
+                <span data-feather="home"></span>
+                Dashboard <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item" id="accordionMenu" role="tablist" aria-multiselectable="true">
+              <a class="nav-link" data-toggle="collapse" data-parent="#accordionMenu" href="#collapseUser" aria-controls="collapseUser" aria-expanded="true">
+                <span data-feather="users"></span>
+                Users <span data-feather="plus"></span>
+              </a>
+              <div class="collapse collapse in nav-item" id="collapseUser">
+                <a class="nav-link" href="/users">Users Game</a>
+                <a class="nav-link" href="/userbiodata">User Game Biodata</a>
+                <a class="nav-link" href="/userhistory">User Game History</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
