@@ -32,8 +32,8 @@ app.use(passport_local.initialize())
 app.use(passport_local.session())
 
 // passport jwt
-// const passport = require('./app/lib/passport')
-// app.use(passport.initialize())
+const passport = require('./app/lib/passport')
+app.use(passport.initialize())
 
 // flash
 app.use(flash())
