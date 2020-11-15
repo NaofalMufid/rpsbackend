@@ -1,33 +1,33 @@
-<%- include('../partials/header') -%>
-<%- include('../partials/sidebar') -%>
+<%- include('../../partials/header') -%>
+<%- include('../../partials/sidebar') -%>
 <!-- content -->
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <h1 class="h2">Data User</h1>
-    <a href="/new/user" class="btn btn-primary btn-smal mb-2"><span data-feather="plus-square"></span> Add User</a>
+    <a href="/new/userbiodata" class="btn btn-primary btn-smal mb-2"><span data-feather="plus-square"></span> Add User</a>
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
         <thead>
             <tr>
             <th>#</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Roles</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Avatar</th>
             <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <% users.forEach(i => { %>
+            <% userbiodata.forEach(i => { %>
             <tr>
                 <td><%= i.user_id %></td>
-                <td><%= i.username %></td>
-                <td><%= i.email %></td>
-                <td><%= i.roles %></td>
+                <td><%= i.name %></td>
+                <td><%= i.gender %></td>
+                <td><img src="<%= i.avatar %>" alt="user avatar" width="100"></td>
                 <td class="form-inline">
-                    <a href="user/<%= i.id %>" class="btn btn-warning btn-sm mr-2">
+                    <a href="userbiodata/<%= i.id %>" class="btn btn-warning btn-sm mr-2">
                         <span data-feather="edit"></span>
                     </a>
 
-                    <form action="/users/<%= i.id %>/delete" method="POST">
+                    <form action="/userbiodata/<%= i.id %>/delete" method="POST">
                         <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this record?')">
                             <span data-feather="trash"></span>
                         </button>
@@ -40,4 +40,4 @@
         </table>
     </div>
 </main>
-<%- include('../partials/footer') -%>
+<%- include('../../partials/footer') -%>

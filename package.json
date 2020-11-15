@@ -1,37 +1,53 @@
 {
-  "name": "game_dashboard",
+  "name": "rpsbackend",
   "version": "1.0.0",
-  "description": "Monolith Dashboard for game rock paper scissors",
-  "main": "server.js",
+  "description": "Rock Paper Scissors Backend system and dashboard",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/NaofalMufid/rpsbackend.git"
+  },
   "keywords": [
-    "node",
+    "nodejs",
     "express",
-    "postgres",
     "sequelize",
-    "rest",
-    "api",
-    "viewengine",
-    "auth"
+    "jwt",
+    "passport",
+    "auth",
+    "postgres",
+    "backend"
   ],
-  "author": "palopal",
+  "author": "naofal",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NaofalMufid/rpsbackend/issues"
+  },
+  "homepage": "https://github.com/NaofalMufid/rpsbackend#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
-    "pg": "^8.4.0",
+    "express-flash": "0.0.2",
+    "express-group-router": "^2.1.0",
+    "express-session": "^1.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.5.0",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.6"
   }
 }

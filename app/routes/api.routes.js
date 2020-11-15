@@ -1,33 +1,37 @@
-const { users } = require("../models")
+const Router = require('express-group-router');
+let router = new Router();
+const auth = require('../controllers/api/auth')
+const player = require('../controllers/api/player')
+const gameasset = require('../controllers/api/gameasset')
+const restrict_jwt = require('../middlewares/restrict_jwt')
 
-module.exports = app => {
-    const users = require("../controllers/api/userGame")
-
-    var router = require("express").Router()
-
+module.exports = app =>{
     /**
-     * Endpoint API User Games */
-
-    // create a new user
-    router.post("/", users.create)
-
-    // retrieve all user
-    router.get("/", users.findAll)
-
-    // retrieve all user by condition
-    router.get("/username", users.findAllCondition)
-
-    // retrieve a singe user with id
-    router.get("/:id", users.findOne)
-
-    // update a user with id
-    router.put("/:id", users.update)
+     * Auth Routes
+     */
     
-    // delete a user with id
-    router.delete("/:id", users.delete)
+    // register user
+    router.post('/register', auth.register)
+    // login user
+    router.post('/login', auth.login)
+    router.get('/whoami', restrict_jwt, auth.whoami)
+    //  End Auth Routes
+    
+    router.group([restrict_jwt], (router) => {
+        // show all assets 
+        router.get("/assets", gameasset.findAll)
+        
+        // retrieve a singe asset with id 
+        router.get("/assets/:id", gameasset.findOne)
 
-    // delete all user
-    router.delete("/", users.deleteAll)
-
-    app.use("/api/users", router)
+        // show all player
+        router.get("players", player.index)
+        // show all player
+        router.get("players/:id", player.show)
+        // show all player
+        router.post("players/:id/update", player.update)
+    })
+    
+    const listRoutes = router.init()
+    app.use("/api/v1/", listRoutes)
 }

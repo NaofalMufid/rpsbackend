@@ -1,43 +1,53 @@
 # RockPaperScissors Backend
-This repository for dashboard management RockPaperScissors Game. 
+This repository for **backend** and **dashboard** management RockPaperScissors Game. 
 
 ## Build with :
 - node
-- express
-- ejs
-- postgres
-- sequelize & sequelize-cli
+- framework : express
+- view engine : ejs
+- database : postgres
+- library/package: sequelize & sequelize-cli, passport, jsonwebtoken, bcrypt
 
 ## Features
 - admin dashboard 
-- login & logout (progress)
-- crud (progress)
-- erd
-![alt text](https://github.com/NaofalMufid/rpsbackend/blob/main/class-diagram.png?raw=true)
+- login & logout 
+- crud user, biodata and history
 - api
+
+## database design
+![alt text](https://github.com/NaofalMufid/rpsbackend/blob/main/class-diagram.png?raw=true)
+
+## Dashboard APP
+run in **htpp://localhost:8000** or **htpp://127.0.0.1:8000**
+
+resource :
+- users
+- user biodata
+- user history
+
+
 ## API Endpoint :
 ```
-# ok
-/users/ = GET,POST
-/users/:id = GET, PUT, DELETE
+/api/v1/players/ = GET
+/api/v1/players/:id = GET
+/api/v1/register = POST
+/api/v1/login = POST
 
-# progress
-/userBiodata/ = GET,POST
-/userBiodata/:id = GET, PUT, DELETE
-
-/userHistory/ = GET,POST
-/userHistory/:id = GET, PUT, DELETE
+/api/v1/assets = GET
+/api/v1/assets/:id = GET
 ```
 
-## Setting .env and run app
+## Setting database and run app
 ```
-cp .env-example .env
-
-#edit attribut value in .env
+edit attributes vale on file db.config.json in app/config/
+sequelize db:create
+sequelize db:migrate
 
 npm run start
-
-#or
-
+# or
 npm run dev
+```
+### run seeder
+```
+sequelize db:seed:all
 ```
