@@ -17,6 +17,8 @@ module.exports = app =>{
     router.get('/whoami', restrict_jwt, auth.whoami)
     //  End Auth Routes
     
+    // show all player
+    router.get("players", player.index)
     router.group([restrict_jwt], (router) => {
         // show all assets 
         router.get("/assets", gameasset.findAll)
@@ -24,11 +26,9 @@ module.exports = app =>{
         // retrieve a singe asset with id 
         router.get("/assets/:id", gameasset.findOne)
 
-        // show all player
-        router.get("players", player.index)
-        // show all player
+        // show player by id
         router.get("players/:id", player.show)
-        // show all player
+        // update player 
         router.post("players/:id/update", player.update)
     })
     
