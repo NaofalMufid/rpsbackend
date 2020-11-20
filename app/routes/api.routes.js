@@ -17,8 +17,11 @@ module.exports = app =>{
     router.get('/whoami', restrict_jwt, auth.whoami)
     //  End Auth Routes
     
-    // show all player
+    // api challenge 8
     router.get("players", player.index)
+    router.get("searchplayer", player.index)
+    router.get("editplayers/:id", player.show)
+
     router.group([restrict_jwt], (router) => {
         // show all assets 
         router.get("/assets", gameasset.findAll)

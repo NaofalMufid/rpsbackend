@@ -1,10 +1,14 @@
 const model = require('../../models')
 const Player = model.User 
+const Op = model.Sequelize.Op
 
 module.exports = {
     // fetch all user
     index: (req, res) => {
-        Player.findAll()
+        const username = req.query.username
+        var condition = username ? { username: { [Op.iLike]: `%${username}%` } } : null
+
+        Player.findAll({ where: condition })
         .then(users => {
             res.send(users)
         })
