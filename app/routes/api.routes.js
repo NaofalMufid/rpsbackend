@@ -19,7 +19,7 @@ module.exports = app =>{
     
     // api challenge 8
     router.get("players", player.index)
-    router.get("searchplayer", player.index)
+    router.get("searchplayer", player.search)
     router.get("player/:id", player.show)
     router.put("players/:id", player.update)
 

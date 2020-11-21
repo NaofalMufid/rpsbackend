@@ -5,16 +5,30 @@ const Op = model.Sequelize.Op
 module.exports = {
     // fetch all user
     index: (req, res) => {
+
+        Player.findAll()
+        .then(users => {
+            res.send(users)
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error ocurred while retrieving user"
+            })
+        })
+    },
+
+    // search player
+    search: (req, res) => {
         const keyword = req.query.keyword
 
-        Player.findAll({ 
+        Player.findAll({
             where:{
                 [Op.or]: [
                     keyword ? {username: {[Op.iLike]: `%${keyword}%`}} : null,
                     keyword ? {email: {[Op.iLike]: `%${keyword}%`}} : null,
                 ]
             }
-        })
+         })
         .then(users => {
             res.send(users)
         })
