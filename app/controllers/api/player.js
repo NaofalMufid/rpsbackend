@@ -5,10 +5,16 @@ const Op = model.Sequelize.Op
 module.exports = {
     // fetch all user
     index: (req, res) => {
-        const username = req.query.username
-        var condition = username ? { username: { [Op.iLike]: `%${username}%` } } : null
+        const keyword = req.query.keyword
 
-        Player.findAll({ where: condition })
+        Player.findAll({ 
+            where:{
+                [Op.or]: [
+                    keyword ? {username: {[Op.iLike]: `%${keyword}%`}} : null,
+                    keyword ? {email: {[Op.iLike]: `%${keyword}%`}} : null,
+                ]
+            }
+        })
         .then(users => {
             res.send(users)
         })

@@ -20,7 +20,8 @@ module.exports = app =>{
     // api challenge 8
     router.get("players", player.index)
     router.get("searchplayer", player.index)
-    router.get("editplayers/:id", player.show)
+    router.get("player/:id", player.show)
+    router.put("players/:id", player.update)
 
     router.group([restrict_jwt], (router) => {
         // show all assets 
