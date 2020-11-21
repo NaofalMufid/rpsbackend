@@ -15,11 +15,11 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
     // encryption
-    static #encrypt = (password) => bcrypt.hashSync(password, 10)
+    // static #encrypt = (password) => bcrypt.hashSync(password, 10)
     // register user
     static register = ({ username, email, password}) => {
-      const encryptPassword = this.#encrypt(password)
-      return this.create({ username, email, password : encryptPassword })
+      // const encryptPassword = this.#encrypt(password)
+      return this.create({ username, email, password })
     }
     // checking password
     checkPassword = password => bcrypt.compareSync(password, this.password)
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       // token verification
       const secretToken = 'cukupkitayangtahu'
       // create token
-      const token = jwt.sign(payload, secretToken)
+      const token = jwt.sign(payload, secretToken, {expiresIn: 86400 * 30})
       return token
     }
 
@@ -59,6 +59,16 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'User',
   });
+  User.beforeSave((user, options) => {
+    if (user.changed('password')) {
+      user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null)
+    }
+  })
+  // User.beforeUpdate((user, options) => {
+  //   if (user.changed('password')) {
+  //     user.password = bcrypt.hashSync(user.getpassword, bcrypt.genSaltSync(10), null)
+  //   }
+  // })
   User.associate = function (models) {
     User.hasOne(models.UserBiodata, {
       foreignKey: 'user_id'

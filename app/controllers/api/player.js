@@ -6,7 +6,9 @@ module.exports = {
     // fetch all user
     index: (req, res) => {
 
-        Player.findAll()
+        Player.findAll({
+            attributes: ['id', 'username', 'email']
+        })
         .then(users => {
             res.send(users)
         })
@@ -27,7 +29,8 @@ module.exports = {
                     keyword ? {username: {[Op.iLike]: `%${keyword}%`}} : null,
                     keyword ? {email: {[Op.iLike]: `%${keyword}%`}} : null,
                 ]
-            }
+            },
+            attributes: ['id', 'username', 'email']
          })
         .then(users => {
             res.send(users)
