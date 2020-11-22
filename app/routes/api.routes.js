@@ -22,6 +22,7 @@ module.exports = app =>{
     router.get("searchplayer", player.search)
     router.get("player/:id", player.show)
     router.put("players/:id", player.update)
+    router.delete("players/:id", player.destroy)
 
     router.group([restrict_jwt], (router) => {
         // show all assets 
@@ -29,11 +30,6 @@ module.exports = app =>{
         
         // retrieve a singe asset with id 
         router.get("/assets/:id", gameasset.findOne)
-
-        // show player by id
-        router.get("players/:id", player.show)
-        // update player 
-        router.post("players/:id/update", player.update)
     })
     
     const listRoutes = router.init()

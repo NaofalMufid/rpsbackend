@@ -64,11 +64,6 @@ module.exports = (sequelize, DataTypes) => {
       user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null)
     }
   })
-  // User.beforeUpdate((user, options) => {
-  //   if (user.changed('password')) {
-  //     user.password = bcrypt.hashSync(user.getpassword, bcrypt.genSaltSync(10), null)
-  //   }
-  // })
   User.associate = function (models) {
     User.hasOne(models.UserBiodata, {
       foreignKey: 'user_id'
