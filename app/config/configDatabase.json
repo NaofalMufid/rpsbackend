@@ -1,9 +1,10 @@
 {
   "development": {
-    "username": "okabe",
-    "password": "dibuka007;",
-    "database": "rps_development",
-    "host": "127.0.0.1",
+    "username": "pyyqeapmyjocdy",
+    "password": "e157ec56d50a804cbbea3338e8ed3829393c51f2ac5ecfbc2d7528304a6bfa46",
+    "database": "d3uf7o3rrjjopf",
+    "host": "ec2-54-236-122-55.compute-1.amazonaws.com",
+    "port": "5432",
     "dialect": "postgres"
   },
   "test": {
@@ -14,10 +15,11 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "okabe",
-    "password": "dibuka007;",
-    "database": "rps_development",
-    "host": "127.0.0.1",
+    "username": "pyyqeapmyjocdy",
+    "password": "e157ec56d50a804cbbea3338e8ed3829393c51f2ac5ecfbc2d7528304a6bfa46",
+    "database": "d3uf7o3rrjjopf",
+    "host": "ec2-54-236-122-55.compute-1.amazonaws.com",
+    "port": "5432",
     "dialect": "postgres"
   }
 }
