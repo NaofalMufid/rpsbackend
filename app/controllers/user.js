@@ -1,5 +1,6 @@
 const model = require('../models')
 const UserGame = model.User 
+const bcrypt = require('bcrypt')
 
 module.exports = {
     // fetch all user
@@ -79,12 +80,19 @@ module.exports = {
     },
 
     // update user to database
-    update: (req, res) => {
+    update: async (req, res) => {
         const id = req.params.id
+        const hashPassword = await bcrypt.hashSync(req.body.password, 10)
+        const player = {
+            username: req.body.username,
+            email: req.body.username.email,
+            password: hashPassword
+        }
 
-        UserGame.update(req.body, {
-            where: {id: id}
-        })
+        UserGame.update(
+            player,
+            { where: {id: id} }
+        )
         .then(num => {
             if (num == 1) {
                 // res.send({

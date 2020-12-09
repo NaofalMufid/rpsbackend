@@ -4,6 +4,7 @@
   "description": "Rock Paper Scissors Backend system and dashboard",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -45,7 +46,8 @@
     "pg": "^8.5.0",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

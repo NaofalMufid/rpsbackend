@@ -4,13 +4,17 @@ const cookieParser = require('cookie-parser')
 const cors = require("cors")
 const session = require('express-session')
 const flash = require('express-flash')
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 4000
+const swaggerUI = require('swagger-ui-express');
+const swaggerFile = require('./api-documentation/swagger.json')
 const app = express()
 
 app.use(cors())
 
 // set public folder for styling ejs
 app.use(express.static(__dirname + '/public'));
+// swagger api documentation
+app.use('/api_docs', swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
 // parse request of content-type - application/json
 app.use(cookieParser())
