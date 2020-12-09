@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'UserHistory',
   });
-  UserHistory.associat = function (models) {
+  UserHistory.associate = function (models) {
     UserHistory.belongsTo(models.User, {})
   }
   return UserHistory;
