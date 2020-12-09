@@ -4,7 +4,7 @@
       "description": "This is a API Documentation RPS Game Backend ",
       "version": "1.0.0",
       "title": "RPS Game API",
-      "termsOfService": "http://rpsgame.io/terms/",
+      "termsOfService": "https://afternoon-river-46748.herokuapp.com/terms/",
       "contact": {
         "email": "api-team@rpsgame.io"
       },
@@ -15,26 +15,18 @@
     },
     "host": "afternoon-river-46748.herokuapp.com",
     "basePath": "/api/v1/",
+    "schemes": [
+      "https"
+    ],
     "tags": [
       {
         "name": "Players",
-        "description": "Player auth register & login",
-        "externalDocs": {
-          "description": "Find out more",
-          "url": "http://rpsgame.io/api_docs"
-        }
+        "description": "Player auth register & login"
       },
       {
         "name": "Assets",
-        "description": "Game Asset Resource",
-        "externalDocs": {
-          "description": "Find out more",
-          "url": "http://rpsgame.io/api_docs"
-        }
+        "description": "Game Asset Resource"
       }
-    ],
-    "schemes": [
-      "https"
     ],
     "securityDefinitions": {
       "Bearer": {

@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-const dbConfig = require("../config/db.config")
-
-const Sequelize = require("sequelize")
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-    host: dbConfig.HOST,
-    dialect: dbConfig.dialect,
-    operatorAliases: false,
-
-    pool:{
-        max: dbConfig.pool.max,
-        min: dbConfig.pool.min,
-        acquire: dbConfig.pool.acquire,
-        idle: dbConfig.pool.idle
-    }
-})
-
-const db = {}
-
-db.Sequelize = Sequelize
-db.sequelize = sequelize
-
-db.userGame = require("./usergame")(sequelize, Sequelize)
-db.userGameBiodata = require("./usergamebiodata")(sequelize, Sequelize)
-db.userGameHistory = require("./usergamehistory")(sequelize, Sequelize)
-
-module.exports = db
-=======
 'use strict';
 
 const fs = require('fs');
@@ -63,4 +35,3 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
->>>>>>> b94474a0cd0d93c9d24f1f9d8ae5454c43925805
